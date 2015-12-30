@@ -130,6 +130,9 @@ var map = new mapboxgl.Map({
     // pitch: 45
 });
 
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.Navigation({position: 'top-left'}));
+
 // Insert coordinates and zoom levels for chapters, matching IDs in narrative
 var chapters = {
     'cover': {
