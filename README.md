@@ -33,12 +33,8 @@ Mapbox GL story map (Madrid airport runway) https://www.mapbox.com/bites/00045/
 Mapbox storymap tutorial (Sherlock Holmes) (https://www.mapbox.com/mapbox.js/example/v1.0.0/scroll-driven-navigation/
 
 ## To Do
-- define all points, refer to them in chapters, and display all at start and during storymap
-  - this is a real pain in MapBoxGL: https://www.mapbox.com/mapbox-gl-js/example/geojson-markers/
-  - is there a MapboxGL equivalent to:
-    - L.marker([38.913184,-77.031952]).addTo(map);
-- display third-party tileLayers (such as CartoDB LightAll and CT Aerial 1934 WMS)
-- evaluate pros and cons of one-color markers vs changing color when featured in narrative (see prior version)
-- determine if it will display polygons (as geojson objects?) for narratives about boundaries
-- need code to automatically resize and center images to fit narrative div width (as in pulse version)
+- add code to automatically resize and center images to fit narrative div width (as in pulse version)
+- ask Mapbox support: can Mapbox GL JS  display third-party tileLayers (such as CartoDB LightAll and CT Aerial 1934 WMS) with layer control; start with this example: https://www.mapbox.com/mapbox-gl-js/example/third-party/
+- can third-party tileLayers change with narrative sections/chapters?
+- can MapboxGL display geojson polygons on specific narrative sections/chapters, to tell stories about boundaries (not just points)?
 - ask Mapbox support: when testing IE 8, my browser support code alert did not appear, even though it's based on the same code as this sample that correctly displays, with a reminder to update IE (https://www.mapbox.com/mapbox-gl-js/example/check-for-support/)
