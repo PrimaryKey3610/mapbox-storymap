@@ -1,0 +1,44 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Ann Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6782,
+          41.7676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Hopkins Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6848,
+          41.7677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Forest Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.701,
+          41.7652
+        ]
+      }
+    }
+  ]
+}
