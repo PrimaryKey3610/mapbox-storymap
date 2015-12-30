@@ -14,12 +14,16 @@ http://jackdougherty.github.io/mapbox-storymap/markers.html
 
 http://jackdougherty.github.io/mapbox-storymap/pulse.html
 
-## Dependency
+## MapboxGL and Mapbox.js Dependency
 requires a Mapbox account token (free up to 50,000 views per month)
 
 MapboxGL is supported by all modern browsers (Chrome, FFox, Safari) and Internet Explorer 9+
 
 Note: When testing Apple iPad 1st generation with most recent Safari and Chrome available on that device, the code displayed the alert message, "Your browser does not support Mapbox GL".
+
+if MapboxGL is new for you, but you have prior coding experience, read https://www.mapbox.com/help/mapbox-gl-js-fundamentals/
+- no distinction between baselayers and overlay layers
+- coordinates in lon,lat (like geoJson and xy coords); NOT lat,lng (like Leaflet, Mapbox.js)
 
 ## Credits
 Mapbox GL story map with scroll fly-to https://www.mapbox.com/mapbox-gl-js/example/scroll-fly-to/
