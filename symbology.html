@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamFja2RvdWdoZXJ0eSIsImEiOiJxMi11TGlzIn0.ydUTGpMKcADi7fKPxy0GVA';
+
+var randomPoints = {
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "marker-symbol": "monument"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-72.69, 41.76]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "marker-symbol": "bar"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-72.71, 41.755]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "marker-symbol": "bus"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-72.70, 41.745]
+        }
+    }]
+};
+
+var locations = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Ann Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6782,
+          41.7676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Hopkins Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6848,
+          41.7677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Forest Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.701,
+          41.7652
+        ]
+      }
+    }
+  ]
+};
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v8',
+    center: [-72.67, 41.76],
+    zoom: 12.5
+});
+
+
+map.on('style.load', function () {
+    // Add point markers as new geoJson source from in-line code above
+    map.addSource("markers1", {
+        "type": "geojson",
+        "data": randomPoints
+    });
+
+    // Add a layer showing the point markers
+    map.addLayer({
+        "id": "markers1",
+        "source": "markers1",
+        // "interactive": true,
+        "type": "symbol",
+        "layout": {
+            "icon-image": "{marker-symbol}-15"
+        }
+    });
+}); // end of function
+
+map.on('style.load', function () {
+    // Add circles as new geoJson source from in-line code above
+    map.addSource("markers2", {
+        "type": "geojson",
+        "data": "http:///Users/jackdougherty/Documents/GitHub/mapbox-storymap/HPHS-locations.geojson"
+    });
+
+    // Add a layer showing the circles
+    map.addLayer({
+    "id": "markers2",
+    "source": "markers2",
+    "type": "circle",
+    "paint": {
+        "circle-radius": 8,
+        "circle-color": "#000099",
+        "circle-opacity": 0.7
+     }
+    });
+}); // end of function
+
+
+</script>
+
+</body>
+</html>
