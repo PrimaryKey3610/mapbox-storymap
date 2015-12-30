@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset=utf-8 />
-<title>MapboxGL scroll storymap</title>
+<title>MapboxGL storymap</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.css' rel='stylesheet' />
@@ -22,7 +22,7 @@ body {
 <body>
 
 <style>
-/*2nd styling for map*/
+/*2nd styling for map - do not confuse with styling above*/
 #map {
   position: fixed;
   width: 70%;
@@ -40,7 +40,6 @@ body {
   }
 section {
     padding:  10px 10px 0px 10px;
-    /*line-height: 25px;*/
     border-bottom: 1px solid #ddd;
     opacity: 0.25;
     font-size: 13px;
@@ -50,139 +49,99 @@ section.active {
 }
 section:last-child {
     border-bottom: none;
-    margin-bottom: 400px;
+    margin-bottom: 600px;
 }
 </style>
 <div id='map'></div>
+
+<!-- Write narrative in sections, with IDs to match chapters below -->
   <div id='narrative'>
     <section id='cover' class='cover active'>
-      <h2>Hartford Public High School sites (draft)</h2>
-      <p>leaflet-storymap-mapbox/index-markers-gl.html</p>
-      <p>adapted from MapBoxGL by Jack Dougherty</p>
+      <h2 class='center'>Hartford Public High School</br> sites from 1847-present</h2>
+      <h3 class='center'>Sample Storymap created with Mapbox GL</h3>
+      <p>HPHS is recognized as the second-oldest public high school in the US. While the original Latin School dates back to 1638, the modern "high school" name and building began in 1847. Learn more from the <a href="https://hphs1638.wordpress.com/" target="_blank">HPHS Museum and Archive.</a></p>
       <p class='center'>Scroll down &#x25BE;</p>
     </section>
     <section id='Ann'>
-        <h3>Ann Street, 1847-1869?</h3>
-        <img src='HPHS1847small.jpg'>
-        <small class='center'>Source credit to come</small>
-        <p>Text about building on Ann Street. Text about building on Ann Street. Text about building on Ann Street. Text about building on Ann Street.</p>
+      <h3>Ann Street, 1847-1869</h3>
+      <img src='HPHS1847small.jpg'>
+      <small class='center'>Source credit to come</small>
+      <p>The first Hartford Public High School building, located at the corner of Ann Street and Asylum Avenue, was dedicated by Henry Barnard in 1847.</br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.</p>
     </section>
     <section id='Hopkins'>
-      <h3>Hopkins Street, 1869-1882?</h3>
+      <h3>Hopkins Street, 1869-1882</h3>
       <img src='HPHS1869small.jpg'>
-      <p>Text about building on Hopkins Street.<br>
-        Text about building on Hopkins Street.<br>
-        Text about building on Hopkins Street.<br>
-        Text about building on Hopkins Street.<br>
-        <small>Source credit to come</small></p>
+      <small class='center'>Source credit to come</small>
+      <p>The school moved to Hopkins Street in 1869, but was destroyed by a fire in 1882.<br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.</p>
     </section>
     <section id='Hopkins2'>
-      <h3>Hopkins Street rebuilt, 1882-1963?</h3>
+      <h3>Hopkins Street rebuilt, 1883-1963</h3>
       <img src='HPHS1911small.jpg'>
-      <p>Text about building on Hopkins Street.<br>
-        Text about building on Hopkins Street.<br>
-        Text about building on Hopkins Street.<br>
-        Text about building on Hopkins Street.<br>
-        <small>Source credit to come</small></p>
+      <small class='center'>Source credit to come</small>
+      <p>After the fire, a new building was constructed on the same site in 1883.<br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.</p>
     </section>
     <section id='Forest'>
-      <h3>Forest Street, 1964?-present</h3>
+      <h3>Forest Street, 1963-present</h3>
       <img src='HPHS2011small.jpg'>
-      <p>Text about building on Forest Street.<br>
-        Text about building on Forest Street.<br>
-        Text about building on Forest Street.<br>
-        Text about building on Forest Street.<br>
-        Text about building on Forest Street.<br>
-        <small>Source credit to come</small></p>
+      <small class='center'>Source credit to come</small>
+      <p>When the East-West interstate highway approached, a new school was constructed on Forest Street in 1963.<br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.<br>
+        More text to come here.</p>
     </section>
     <section id='footer'>
-      <p>Source text in the footer to come.</p>
+      <p>DRAFT visualization created by Jack Dougherty for <a href="http://ontheline.trincoll.edu" target="_blank">OnTheLine.trincoll.edu</a>.<br>
+        <br>
+        In order for this last narrative section to display, add sufficient lines of text, or empty line breaks, or modify the CSS section last child margin setting.<br>
+        <br>
+        <br>
+        <br>
+        </p>
     </section>
   </div>
+
 <script>
-// INSERT your own Mapbox GL token
+
+// INSERT your own MapboxGL token and create the map
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFja2RvdWdoZXJ0eSIsImEiOiJxMi11TGlzIn0.ydUTGpMKcADi7fKPxy0GVA';
-// run tests with IE browsers to decide if this support alert is needed; if not, remove lower bracket
+// TO DO: ask MapBox support why this code does not trigger alert in IE8 remove
 if (!mapboxgl.supported()) {
     alert('Your browser does not support Mapbox GL');
 } else {
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v8',  // MapboxGL options: satellite, light
-    center: [-72.6782, 41.7676], // IMPORTANT -- coordinates are lng,lat (NOT lat, lng)
+    style: 'mapbox://styles/mapbox/streets-v8',  // Current MapboxGL options: satellite, light
+    center: [-72.6873, 41.7685], // Coordinates are lng,lat (NOT lat, lng)
     zoom: 13.5
-    //zoomControl: false,
     // bearing: 27,
     // pitch: 45
 });
 
-// IMPORTANT -- these are lng,lat (not lat, lng)
-var markers = { "type": "FeatureCollection",
-  "features": [
-    {"type": "Feature",
-      "properties": { "id": "Ann", "marker-symbol": "1"},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [ -72.6782, 41.7676]
-      }
-    },
-    {"type": "Feature",
-      "properties": { "id": "Hopkins", "marker-symbol": "2" },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-72.6848, 41.7677]
-      }
-    },
-    {"type": "Feature",
-      "properties": { "id": "Forest", "marker-symbol": "3" },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-72.7010, 41.7652]
-      }
-    }
-  ]
-};
-
-map.on('style.load', function () {
-    // Add marker data as a new GeoJSON source.
-    map.addSource("markers", {
-        "type": "geojson",
-        "data": markers
-    });
-
-    // Add a layer showing the markers.
-    map.addLayer({
-        "id": "markers",
-        "interactive": true,
-        "type": "symbol",
-        "source": "markers",
-        "layout": {
-            "icon-image": "{marker-symbol}-15"
-        }
-    });
-});
-
-
-
-
-
-
-
-
-
-
+// Insert coordinates and zoom levels for chapters, matching IDs in narrative
 var chapters = {
-    // make cover settings identical to those above
     'cover': {
-        center: [-72.6782, 41.7676],
-        zoom: 13.5
+        // no center or zoom needed here
     },
     'Ann': {
-        // duration: 3000,   // optional settings for MapboxGL
-        // bearing: 27,
-        // pitch: 20,
         center: [-72.6782, 41.7676],
-        zoom: 17,
+        zoom: 17
+        // optional settings for MapboxGL include:
+        // duration: 3000,
+        // bearing: 27,
+        // pitch: 20
     },
     'Hopkins': {
         center: [-72.6848, 41.7677],
@@ -194,14 +153,80 @@ var chapters = {
     },
     'Forest': {
         center: [-72.7010, 41.7652],
-        zoom: 17
+        zoom: 16.5
     },
     'footer': {
-        center: [-72.7010, 41.7652],
-        zoom: 13
+        center: [-72.6873, 41.7685],
+        zoom: 13.5
     }
 };
 
+// To display simple markers on map, MapboxGL requires two steps
+// Step 1: GeoJson for the markers (created with http://geojson.io)
+// To Do: ask MapBoxGL support how to load this geojson data from a local file
+var locations = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Ann Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6782,
+          41.7676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Hopkins Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6848,
+          41.7677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Forest Street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.701,
+          41.7652
+        ]
+      }
+    }
+  ]
+};
+
+// Step 2: After map appears, add the geoJson source from above, and add layer to display as circles (rather than markers, since MapboxGL styling is not clearly documented)
+map.on('style.load', function () {
+    map.addSource("markers1", {
+        "type": "geojson",
+        "data": locations
+    });
+
+    map.addLayer({
+    "id": "markers1",
+    "source": "markers1",
+    "type": "circle",
+    "paint": {
+        "circle-radius": 8,
+        "circle-color": "#000099",
+        "circle-opacity": 0.7
+     }
+    });
+}); // end of function
 
 // optional: add legend to toggle any baselayers and/or overlays
 // global variable with (null, null) allows indiv layers to be added inside functions below
@@ -251,7 +276,7 @@ window.onscroll = function() {
     }
 };
 
-var activeChapterName = 'cover';  // must match initial chapter above
+var activeChapterName = 'cover';  // Name must match initial chapter above
 function setActiveChapter(chapterName) {
     if (chapterName === activeChapterName) return;
 
@@ -270,6 +295,5 @@ function isElementOnScreen(id) {
 }
 } // end of mapbox browser support check
 </script>
-
 </body>
 </html>
